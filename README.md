@@ -1,5 +1,15 @@
 # ADM Chega Mais Games
 
+Aplicação web em desenvolvimento para registro, revisão e consolidação de relatórios administrativos da equipe.
+
+## Aplicação web
+
+- Front-end inicial em React + TypeScript + Vite.
+- Área visual de ADM Master para consultar relatórios, revisar status e ver o relatório consolidado.
+- Formulário inicial de relatório individual com data, turno, nível, horários, sala oficial, visitas, eventos, ocorrências, trabalho em equipe e observações.
+- Alternância de visualização entre Master e ADM disponível apenas como demonstração visual.
+- **Importante:** nesta etapa, os registros são mantidos apenas no estado da página. Autenticação individual, banco de dados persistente, permissões reais, exportação e consolidação de dados de produção ainda precisam ser implementados.
+
 Repositório de referência para os procedimentos administrativos da equipe Chega Mais Games.
 
 ## Objetivo

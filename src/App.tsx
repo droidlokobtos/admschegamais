@@ -146,7 +146,7 @@ function App() {
               <div className="summary-note">Este consolidado reúne apenas o conteúdo preenchido. Informações ausentes não são presumidas.</div>
             </section>
           ) : active === "Equipe" ? (
-            <section className="panel"><div className="panel-heading"><div><h2>Equipe administrativa</h2><p>Visão inicial da estrutura de acesso.</p></div></div><div className="team-list">{["ADM Paçoca","ADM Júlia","ADM Nando"].map((name,i)=><div className="team-row" key={name}><div className="team-avatar">{name.split(" ").at(-1)?.[0]}</div><div className="team-person"><strong>{name}</strong><span>{i===0?"Administrador master":"Administrador"}</span></div><span className="team-access">{i===0?"Master":"ADM"}</span></div>)}</div><p className="footnote">A criação e o gerenciamento de contas individuais serão conectados ao serviço de autenticação.</p></section>
+            <section className="panel"><div className="panel-heading"><div><h2>Equipe administrativa</h2><p>Visão inicial da estrutura de acesso.</p></div></div><div className="team-list">{["ADM Paçoca","ADM Júlia","ADM Nando"].map((name,i)=><div className="team-row" key={name}><div className="team-avatar">{name.charAt(name.lastIndexOf(" ") + 1)}</div><div className="team-person"><strong>{name}</strong><span>{i===0?"Administrador master":"Administrador"}</span></div><span className="team-access">{i===0?"Master":"ADM"}</span></div>)}</div><p className="footnote">A criação e o gerenciamento de contas individuais serão conectados ao serviço de autenticação.</p></section>
           ) : (
             <>
               <section className="stats-grid">

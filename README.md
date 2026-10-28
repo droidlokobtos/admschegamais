@@ -81,7 +81,7 @@ Estas regras foram definidas pela liderança e devem ser aplicadas na implementa
 - As verificações devem ser feitas no backend/banco de dados para impedir que chamadas diretas à API contornem a interface.
 - Toda promoção ou tentativa de remover/rebaixar um Admin Master deve gerar registro de auditoria com autor, alvo, data/hora e resultado.
 
-**Estado atual:** o front-end deste repositório ainda é uma demonstração local, sem autenticação real nem banco de dados conectado. Portanto, estas regras estão documentadas como requisito e ainda não podem ser consideradas efetivamente protegidas até serem implementadas e testadas no backend.
+**Estado atual:** a regra de proteção contra rebaixamento/desligamento de Admin Masters foi aplicada no banco Supabase `Chega Mais Games` por meio do trigger `protect_admin_master_account_changes`, e a migration correspondente foi versionada neste repositório. A promoção continua permitida aos Admin Masters conforme as permissões existentes. O teste funcional com sessões de usuários diferentes e a trilha de auditoria de alterações ainda precisam ser concluídos.
 
 ## Como manter este repositório
 

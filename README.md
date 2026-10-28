@@ -83,7 +83,7 @@ Estas regras foram definidas pela liderança e devem ser aplicadas na implementa
 - As verificações devem ser feitas no backend/banco de dados para impedir que chamadas diretas à API contornem a interface.
 - Toda promoção ou tentativa de remover/rebaixar um Admin Master deve gerar registro de auditoria com autor, alvo, data/hora e resultado.
 
-**Estado atual:** a regra de proteção contra rebaixamento/desligamento de Admin Masters foi aplicada no banco Supabase `Chega Mais Games` por meio do trigger `protect_admin_master_account_changes`, e a migration correspondente foi versionada neste repositório. A promoção continua permitida aos Admin Masters conforme as permissões existentes. O teste funcional com sessões de usuários diferentes e a trilha de auditoria de alterações ainda precisam ser concluídos.
+**Estado atual:** a regra de proteção contra rebaixamento/desligamento de Admin Masters está aplicada no Supabase pelo trigger `protect_admin_master_account_changes`. A Edge Function autenticada `manage-admin-role` foi implantada com as ações `promote`, `demote` e `deactivate`; a identidade do Paçoca é validada por UUID no servidor. A tabela `admin_role_audit` registra alterações de nível/ativação e só permite leitura a Admin Masters. A migration e a função estão sendo versionadas neste repositório. Ainda falta conectar o front-end demonstrativo ao login Supabase e testar com sessões reais de ADM, Master e Paçoca.
 
 ## Como manter este repositório
 

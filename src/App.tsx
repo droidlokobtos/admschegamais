@@ -33,8 +33,8 @@ const initialReports: Report[] = [
 
 const today = "2026-10-17";
 
-function App() {
-  const [role, setRole] = useState<"master" | "adm">("master");
+function App({ profile, onSignOut }: { profile: UserProfile; onSignOut: () => void }) {
+  const role = profile.role === "admin_master" ? "master" : "adm";
   const [active, setActive] = useState("Visão geral");
   const [reports, setReports] = useState<Report[]>(initialReports);
   const [search, setSearch] = useState("");
@@ -149,7 +149,7 @@ function App() {
               <div className="summary-note">Este consolidado reúne apenas o conteúdo preenchido. Informações ausentes não são presumidas.</div>
             </section>
           ) : active === "Equipe" ? (
-            <section className="panel"><div className="panel-heading"><div><h2>Equipe administrativa</h2><p>Gerencie os níveis de acesso da equipe.</p></div></div><div className="team-list">{[{name:"ADM Paçoca",role:"admin_master"},{name:"ADM Júlia",role:"adm"},{name:"ADM Nando",role:"adm"}].map((member)=><div className="team-row" key={member.name}><div className="team-avatar">{member.name.charAt(member.name.lastIndexOf(" ") + 1)}</div><div className="team-person"><strong>{member.name}</strong><span>{member.role==="admin_master"?"Administrador master":"Administrador"}</span></div><span className="team-access">{member.role==="admin_master"?"Master":"ADM"}</span>{member.name!=="ADM Paçoca"&&<button className="button button-secondary button-small" onClick={()=>setNotice(member.role==="admin_master"?"Rebaixamento disponível somente para ADM Paçoca. A ação será conectada ao banco na próxima etapa.":"Promoção para Admin Master disponível para Admin Masters. A ação será conectada ao banco na próxima etapa.")}>{member.role==="admin_master"?"Rebaixar para ADM":"Promover a Master"}</button>}</div>)}</div><p className="footnote">Demonstração visual: os botões ainda não alteram contas reais. As permissões efetivas devem ser validadas pelo Supabase.</p></section>
+            <TeamAccessPanel profile={profile} onNotice={setNotice} />
           ) : (
             <>
               <section className="stats-grid">

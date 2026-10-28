@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import App from "./App";
 import { supabase } from "./lib/supabase";
 
@@ -43,7 +44,7 @@ export default function AuthGate() {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  async function signIn(e: React.FormEvent) {
+  async function signIn(e: FormEvent) {
     e.preventDefault();
     if (!supabase) return;
     setBusy(true); setError("");

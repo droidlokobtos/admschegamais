@@ -1,4 +1,7 @@
 import { useMemo, useState } from "react";
+import { supabase } from "./lib/supabase";
+import { TeamAccessPanel } from "./TeamAccessPanel";
+import type { UserProfile } from "./AuthGate";
 import {
   Activity, ArrowDownRight, ArrowUpRight, Bell, CalendarDays, Check,
   ChevronDown, ClipboardList, Clock3, FileCheck2, FilePlus2, Filter,
@@ -128,12 +131,12 @@ function App() {
           <div className="welcome-row">
             <div><div className="eyebrow"><CalendarDays size={14}/> SÁBADO, 17 DE OUTUBRO DE 2026</div><h1>{active === "Visão geral" || active === "Meu painel" ? "Visão geral" : active}</h1><p className="page-subtitle">{role === "master" ? "Acompanhe os relatórios e a rotina administrativa da equipe." : "Registre seu turno e acompanhe seus relatórios enviados."}</p></div>
             <div className="welcome-actions">
-              <button className="button button-secondary" onClick={() => setRole(role === "master" ? "adm" : "master")}><Users size={16}/>{role === "master" ? "Visualizar como ADM" : "Voltar ao Master"}</button>
+              <button className="button button-secondary" onClick={onSignOut}><LogOut size={16}/> Sair</button>
               <button className="button button-primary" onClick={() => setShowForm(true)}><Plus size={17}/> Novo relatório</button>
             </div>
           </div>
 
-          <div className="prototype-banner"><div className="banner-symbol"><Activity size={18}/></div><div><strong>Primeira versão visual</strong><p>Os dados abaixo são demonstrativos. Login real, banco de dados e permissões serão conectados na próxima etapa.</p></div></div>
+          <div className="prototype-banner"><div className="banner-symbol"><ShieldCheck size={18}/></div><div><strong>Sessão autenticada</strong><p>Conta: {profile.display_name || profile.username || profile.id}. O gerenciamento de acessos usa validação no servidor. Os relatórios desta tela ainda são demonstrativos.</p></div></div>
 
           {notice && <div className="toast-message"><Check size={16}/><span>{notice}</span><button onClick={() => setNotice("")} aria-label="Fechar aviso"><X size={15}/></button></div>}
 

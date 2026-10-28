@@ -8,7 +8,9 @@ Aplicação web em desenvolvimento para registro, revisão e consolidação de r
 - Área visual de ADM Master para consultar relatórios, revisar status e ver o relatório consolidado.
 - Formulário inicial de relatório individual com data, turno, nível, horários, sala oficial, visitas, eventos, ocorrências, trabalho em equipe e observações.
 - Alternância de visualização entre Master e ADM disponível apenas como demonstração visual.
-- **Importante:** nesta etapa, os registros são mantidos apenas no estado da página. Autenticação individual, banco de dados persistente, permissões reais, exportação e consolidação de dados de produção ainda precisam ser implementados.
+- Login por e-mail e senha via Supabase Auth e carregamento do perfil ativo em `public.profiles`.
+- Painel Equipe conectado à tabela real de perfis; promoção, rebaixamento e desligamento chamam a Edge Function autenticada `manage-admin-role`.
+- **Limite atual:** os relatórios, indicadores e revisão continuam demonstrativos e não devem ser usados como dados operacionais reais até serem conectados ao banco.
 
 Repositório de referência para os procedimentos administrativos da equipe Chega Mais Games.
 
@@ -95,3 +97,13 @@ Estas regras foram definidas pela liderança e devem ser aplicadas na implementa
 ## Limite da integração com o ChatGPT
 
 Este repositório pode guardar o contexto operacional e os documentos produzidos. Isso não significa que todas as conversas futuras serão sincronizadas automaticamente com o GitHub. Novas decisões e alterações precisam ser solicitadas ou registradas explicitamente para que a documentação seja atualizada.
+
+
+### Configuração do front-end conectado
+
+1. Instale as dependências com `npm install`.
+2. Configure `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` conforme `.env.example` no ambiente de desenvolvimento/deploy.
+3. Confirme que cada usuário possui conta no Supabase Auth e perfil ativo em `public.profiles` com o mesmo UUID de Auth.
+4. A Edge Function `manage-admin-role` deve permanecer com verificação JWT habilitada.
+
+A área de relatórios ainda usa dados locais demonstrativos. A conexão do login não significa que os relatórios foram migrados para persistência.

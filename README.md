@@ -69,6 +69,20 @@ Regulamentos de eventos devem documentar, quando aplicável:
 
 Cada evento deve manter seu próprio regulamento para evitar misturar regras de dinâmicas diferentes.
 
+## Permissões de Admin Master
+
+Estas regras foram definidas pela liderança e devem ser aplicadas na implementação de autenticação e autorização:
+
+- Um Admin Master pode promover um ADM comum para Admin Master.
+- Somente o ADM Paçoca pode desligar, remover ou revogar o nível Admin Master de outro usuário que já seja Admin Master.
+- Outros Admin Masters não podem remover, rebaixar ou revogar o acesso Master de Paçoca nem de qualquer outro Admin Master.
+- A promoção de um ADM não concede a ele o privilégio exclusivo de desligar outros Admin Masters.
+- O sistema deve identificar Paçoca por um identificador de usuário estável e protegido no servidor; não basta comparar o nome exibido na interface.
+- As verificações devem ser feitas no backend/banco de dados para impedir que chamadas diretas à API contornem a interface.
+- Toda promoção ou tentativa de remover/rebaixar um Admin Master deve gerar registro de auditoria com autor, alvo, data/hora e resultado.
+
+**Estado atual:** o front-end deste repositório ainda é uma demonstração local, sem autenticação real nem banco de dados conectado. Portanto, estas regras estão documentadas como requisito e ainda não podem ser consideradas efetivamente protegidas até serem implementadas e testadas no backend.
+
 ## Como manter este repositório
 
 - Atualizar a documentação quando uma regra for confirmada ou alterada pela liderança.

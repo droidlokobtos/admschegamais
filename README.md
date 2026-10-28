@@ -74,7 +74,9 @@ Cada evento deve manter seu próprio regulamento para evitar misturar regras de 
 Estas regras foram definidas pela liderança e devem ser aplicadas na implementação de autenticação e autorização:
 
 - Um Admin Master pode promover um ADM comum para Admin Master.
-- Somente o ADM Paçoca pode desligar, remover ou revogar o nível Admin Master de outro usuário que já seja Admin Master.
+- A tela de Equipe deve oferecer a opção **Promover a Master** para contas ADM e **Rebaixar para ADM** para contas Master.
+- Somente o ADM Paçoca pode rebaixar outro Admin Master para ADM, desligar essa conta ou revogar seu acesso Master. Os demais Admin Masters não podem rebaixar nem desligar contas Master.
+- A opção de rebaixamento não deve excluir a conta nem seus relatórios; deve apenas alterar o nível de acesso, preservando o histórico.
 - Outros Admin Masters não podem remover, rebaixar ou revogar o acesso Master de Paçoca nem de qualquer outro Admin Master.
 - A promoção de um ADM não concede a ele o privilégio exclusivo de desligar outros Admin Masters.
 - O sistema deve identificar Paçoca por um identificador de usuário estável e protegido no servidor; não basta comparar o nome exibido na interface.
